@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_cell"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="@drawable/ic_touch_menu"
+    android:orientation="horizontal"
+    android:padding="@dimen/len_8">
+
+    <ImageView
+        android:id="@+id/im"
+        android:layout_width="@dimen/len_56"
+        android:layout_height="@dimen/len_56"
+        android:layout_gravity="center"
+        android:padding="@dimen/len_12"
+        tools:src="@drawable/ic_downloaded" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/len_2"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_file_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_16"
+            tools:text="微信" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progressTint="@color/grey_500"
+            tools:targetApi="lollipop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_file_size"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|top"
+                android:textColor="@color/grey_500"
+                android:textSize="@dimen/font_12"
+                tools:text="5.07m/44.01m" />
+
+            <TextView
+                android:id="@+id/txt_status"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="start|top"
+                android:textSize="@dimen/font_12"
+                tools:text="暂停" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn"
+        android:layout_width="@dimen/len_56"
+        android:layout_height="@dimen/len_56"
+        android:layout_gravity="center"
+        android:background="@color/trans"
+        app:srcCompat="@drawable/ic_start" />
+</LinearLayout>
