@@ -45,7 +45,7 @@ public class FileInfoDaoImpl implements IFileInfoDao {
                         fileInfo.getLength(),
                         fileInfo.getFinished(),
                         fileInfo.isFinished() ? 1 : 0});
-        db.close();
+       // db.close();
     }
 
     @Override
@@ -63,7 +63,7 @@ public class FileInfoDaoImpl implements IFileInfoDao {
                             fileInfo.getFinished(),
                             fileInfo.isFinished() ? 1 : 0});
         }
-        db.close();
+    /*    db.close();*/
     }
 
     @Override
@@ -71,7 +71,7 @@ public class FileInfoDaoImpl implements IFileInfoDao {
         SQLiteDatabase db = mDBHelper.getWritableDatabase();
         String delete = "delete from file_info where id = ?";
         db.execSQL(delete, new Object[]{id});
-        db.close();
+     /*   db.close();*/
     }
 
     @Override
@@ -79,7 +79,7 @@ public class FileInfoDaoImpl implements IFileInfoDao {
         SQLiteDatabase db = mDBHelper.getWritableDatabase();
         String delete = "delete from file_info";
         db.execSQL(delete);
-        db.close();
+     /*   db.close();*/
     }
 
     @Override
@@ -102,7 +102,7 @@ public class FileInfoDaoImpl implements IFileInfoDao {
         if (cursor != null) {
             cursor.close();
         }
-        db.close();
+     /*   db.close();*/
         return fileInfo;
     }
 
@@ -126,7 +126,7 @@ public class FileInfoDaoImpl implements IFileInfoDao {
         if (cursor != null) {
             cursor.close();
         }
-        db.close();
+      /*  db.close();*/
         return fileInfo;
     }
 
@@ -152,7 +152,7 @@ public class FileInfoDaoImpl implements IFileInfoDao {
         if (cursor != null) {
             cursor.close();
         }
-        db.close();
+  /*      db.close();*/
         return fileInfoList;
     }
 
@@ -178,7 +178,7 @@ public class FileInfoDaoImpl implements IFileInfoDao {
         if (cursor != null) {
             cursor.close();
         }
-        db.close();
+   /*     db.close();*/
         return fileInfoList;
     }
 
@@ -204,7 +204,7 @@ public class FileInfoDaoImpl implements IFileInfoDao {
         if (cursor != null) {
             cursor.close();
         }
-        db.close();
+     /*   db.close();*/
         return fileInfoList;
     }
 
@@ -216,6 +216,13 @@ public class FileInfoDaoImpl implements IFileInfoDao {
     }
 
     @Override
+    public void updateLength(int id, int length) {
+        SQLiteDatabase db = mDBHelper.getWritableDatabase();
+        String sql = "update file_info set length = ? where id = ?";
+        db.execSQL(sql, new Object[]{length, id});
+    }
+
+    @Override
     public boolean isExists(String url) {
         SQLiteDatabase db = mDBHelper.getReadableDatabase();
         String sql = "select * from file_info where url = ?";
@@ -224,7 +231,7 @@ public class FileInfoDaoImpl implements IFileInfoDao {
         if (cursor != null) {
             cursor.close();
         }
-        db.close();
+      /*  db.close();*/
         return isExists;
     }
 }

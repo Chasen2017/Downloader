@@ -1,12 +1,15 @@
 package com.example.chasen.downloader.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by chasen on 18-3-26.
  *
  * 文件实体类
  */
 
-public class FileInfo {
+public class FileInfo implements Parcelable{
 
     private int id;             // id
     private String name;        // 文件名
@@ -16,6 +19,7 @@ public class FileInfo {
     private int finished;       // 已下载的大小
     private boolean isFinished; // 是否已经下载完成
     private long speed;
+    private boolean isDownloading;
 
     public FileInfo() {
     }
@@ -29,6 +33,30 @@ public class FileInfo {
         this.finished = finished;
         this.isFinished = isFinished;
     }
+
+    protected FileInfo(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        imageUrl = in.readString();
+        url = in.readString();
+        length = in.readInt();
+        finished = in.readInt();
+        isFinished = in.readByte() != 0;
+        speed = in.readLong();
+        isDownloading = in.readByte() != 0;
+    }
+
+    public static final Creator<FileInfo> CREATOR = new Creator<FileInfo>() {
+        @Override
+        public FileInfo createFromParcel(Parcel in) {
+            return new FileInfo(in);
+        }
+
+        @Override
+        public FileInfo[] newArray(int size) {
+            return new FileInfo[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -94,6 +122,14 @@ public class FileInfo {
         this.speed = speed;
     }
 
+    public boolean isDownloading() {
+        return isDownloading;
+    }
+
+    public void setDownloading(boolean downloading) {
+        isDownloading = downloading;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,6 +142,7 @@ public class FileInfo {
         if (finished != fileInfo.finished) return false;
         if (isFinished != fileInfo.isFinished) return false;
         if (speed != fileInfo.speed) return false;
+        if (isDownloading != fileInfo.isDownloading) return false;
         if (name != null ? !name.equals(fileInfo.name) : fileInfo.name != null) return false;
         if (imageUrl != null ? !imageUrl.equals(fileInfo.imageUrl) : fileInfo.imageUrl != null)
             return false;
@@ -122,6 +159,7 @@ public class FileInfo {
         result = 31 * result + finished;
         result = 31 * result + (isFinished ? 1 : 0);
         result = 31 * result + (int) (speed ^ (speed >>> 32));
+        result = 31 * result + (isDownloading ? 1 : 0);
         return result;
     }
 
@@ -136,6 +174,25 @@ public class FileInfo {
                 ", finished=" + finished +
                 ", isFinished=" + isFinished +
                 ", speed=" + speed +
+                ", isDownloading=" + isDownloading +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(imageUrl);
+        dest.writeString(url);
+        dest.writeInt(length);
+        dest.writeInt(finished);
+        dest.writeByte((byte) (isFinished ? 1 : 0));
+        dest.writeLong(speed);
+        dest.writeByte((byte)(isDownloading ? 1: 0));
     }
 }

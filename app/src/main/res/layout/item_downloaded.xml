@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/len_2"
+    android:foreground="@drawable/ic_touch_menu"
     android:orientation="horizontal">
 
     <ImageView
@@ -15,9 +16,9 @@
         tools:src="@drawable/ic_downloaded" />
 
     <LinearLayout
-        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="@dimen/len_2"
         android:orientation="vertical">
 
@@ -37,7 +38,7 @@
             android:gravity="start|top"
             android:textColor="@color/grey_500"
             android:textSize="@dimen/font_12"
-            tools:text="5.07m/44.01m" />
+            tools:text="44.01m" />
 
     </LinearLayout>
 </LinearLayout>

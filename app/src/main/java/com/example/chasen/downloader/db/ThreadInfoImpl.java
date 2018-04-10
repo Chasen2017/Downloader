@@ -47,7 +47,7 @@ public class ThreadInfoImpl implements IThreadInfoDao {
                         threadInfo.getEnd(),
                         threadInfo.getFinished()
                 });
-        db.close();
+      /*  db.close();*/
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ThreadInfoImpl implements IThreadInfoDao {
         SQLiteDatabase db = mDBHelper.getWritableDatabase();
         String sql = "delete from thread_info where url = ?";
         db.execSQL(sql, new Object[]{url});
-        db.close();
+       /* db.close();*/
     }
 
     @Override
@@ -77,7 +77,7 @@ public class ThreadInfoImpl implements IThreadInfoDao {
         if (cursor != null) {
             cursor.close();
         }
-        db.close();
+        /*db.close();*/
         return threadInfoList;
     }
 
@@ -100,7 +100,7 @@ public class ThreadInfoImpl implements IThreadInfoDao {
         if (cursor != null) {
             cursor.close();
         }
-        db.close();
+      /*  db.close();*/
         return threadInfoList;
     }
 
@@ -109,6 +109,6 @@ public class ThreadInfoImpl implements IThreadInfoDao {
         SQLiteDatabase db = mDBHelper.getWritableDatabase();
         String sql = "update thread_info set finished = ? where id = ? and url = ?";
         db.execSQL(sql, new Object[]{finished, id, url});
-        db.close();
+     /*   db.close();*/
     }
 }

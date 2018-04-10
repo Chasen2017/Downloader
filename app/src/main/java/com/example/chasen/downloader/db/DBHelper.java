@@ -15,7 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // 数据库名称
     public static final String DB_NAME = "download.db";
     // 数据库版本
-    public static final int VERSION = 2;
+    public static final int VERSION = 5;
 
     // 创建文件信息表语句
     public static final String CREATE_FILE_INFO = "create table file_info(" +

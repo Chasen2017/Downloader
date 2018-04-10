@@ -84,6 +84,13 @@ public interface IFileInfoDao {
     void update(int id, int finished, boolean isFinished);
 
     /**
+     * 更新文件长度
+     * @param id id
+     * @param length 长度
+     */
+    void updateLength(int id, int length);
+
+    /**
      * 文件信息是否存在
      * @param url 文件的下载url
      * @return 存在返回true
